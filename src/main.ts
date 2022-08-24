@@ -1,5 +1,24 @@
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
+import { createApp } from "vue";
+import "./style.css";
+import App from "./App.vue";
+import authgear from "@authgear/web";
 
-createApp(App).mount('#app')
+const app = createApp(App);
+
+async function init() {
+  try {
+    // configure Authgear container instance
+    await authgear.configure({
+      endpoint: "",
+      clientID: "<your_client_id>",
+      sessionType: "refresh_token",
+    });
+  } finally {
+    app.mount("#app");
+  }
+}
+
+init().catch((e) => {
+  // Error handling
+  console.error(e);
+});
