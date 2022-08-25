@@ -41,13 +41,31 @@ const startLogin = () => {
       }
     );
 };
+
+const logout = () => {
+  authgear
+    .logout({
+      redirectURI: "http://localhost:4000/",
+    })
+    .then(
+      () => {
+        greetingMessage.value = "";
+      },
+      (err) => {
+        console.error(err);
+      }
+    );
+};
 </script>
 
 <template>
   <h1>Home Page</h1>
   <span v-if="isLoading">Loading...</span>
   <span v-if="greetingMessage">{{ greetingMessage }}</span>
-  <div>
+  <div v-if="!isLoggedIn">
     <button @click="startLogin">Login</button>
+  </div>
+  <div v-if="isLoggedIn">
+    <button @click="logout">Logout</button>
   </div>
 </template>
