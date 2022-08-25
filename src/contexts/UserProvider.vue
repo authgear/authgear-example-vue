@@ -1,12 +1,21 @@
 <script lang="ts">
-import { defineComponent, provide, readonly, ref, Ref, toRefs } from "vue";
+import {
+  defineComponent,
+  InjectionKey,
+  provide,
+  readonly,
+  ref,
+  Ref,
+  toRefs,
+} from "vue";
 import authgear from "@authgear/web";
 
 export interface UserContextValue {
   isLoggedIn: Ref<boolean>;
 }
 
-export const UserStateSymbol = Symbol("UserState");
+export const UserStateSymbol: InjectionKey<UserContextValue> =
+  Symbol("UserState");
 
 export default defineComponent({
   setup() {
