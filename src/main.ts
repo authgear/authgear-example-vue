@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import "./style.css";
 import App from "./App.vue";
+import { router } from "./router";
 import authgear from "@authgear/web";
 
 const app = createApp(App);
@@ -14,6 +15,7 @@ async function init() {
       sessionType: "refresh_token",
     });
   } finally {
+    app.use(router);
     app.mount("#app");
   }
 }
