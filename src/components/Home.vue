@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import authgear from "@authgear/web";
+import authgear, { Page } from "@authgear/web";
 import { inject, onMounted, ref } from "vue";
 import { UserStateSymbol } from "../contexts/UserProvider.vue";
 
@@ -56,6 +56,10 @@ const logout = () => {
       }
     );
 };
+
+const userSetting = async () => {
+  await authgear.open(Page.Settings);
+};
 </script>
 
 <template>
@@ -67,5 +71,14 @@ const logout = () => {
   </div>
   <div v-if="isLoggedIn">
     <button @click="logout">Logout</button>
+    <br />
+    <a
+      target="_blank"
+      rel="noreferrer"
+      @click.stop.prevent="userSetting"
+      href="#"
+    >
+      User Setting
+    </a>
   </div>
 </template>
