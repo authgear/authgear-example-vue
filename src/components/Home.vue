@@ -1,5 +1,29 @@
 <script setup lang="ts">
 import authgear from "@authgear/web";
+import { inject, onMounted, ref } from "vue";
+import { UserStateSymbol } from "../contexts/UserProvider.vue";
+
+const { isLoggedIn } = inject(UserStateSymbol)!;
+const isLoading = ref(false);
+const greetingMessage = ref("");
+
+onMounted(() => {
+  async function updateGreetingMessage() {
+    isLoading.value = true;
+    try {
+      if (isLoggedIn.value) {
+        const userInfo = await authgear.fetchUserInfo();
+        greetingMessage.value = "The current User sub: " + userInfo.sub;
+      }
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  updateGreetingMessage().catch((e) => {
+    console.error(e);
+  });
+});
 
 const startLogin = () => {
   authgear
@@ -21,5 +45,9 @@ const startLogin = () => {
 
 <template>
   <h1>Home Page</h1>
-  <button @click="startLogin">Login</button>
+  <span v-if="isLoading">Loading...</span>
+  <span v-if="greetingMessage">{{ greetingMessage }}</span>
+  <div>
+    <button @click="startLogin">Login</button>
+  </div>
 </template>
