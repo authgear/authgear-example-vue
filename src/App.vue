@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import Home from "./components/Home.vue";
+import UserProvider from "./contexts/UserProvider.vue";
 </script>
 
 <template>
-  <Home />
+  <UserProvider>
+    <router-view />
+  </UserProvider>
 </template>
