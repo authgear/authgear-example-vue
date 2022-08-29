@@ -10,7 +10,7 @@ async function init() {
   try {
     // configure Authgear container instance
     await authgear.configure({
-      endpoint: "",
+      endpoint: "<your_app_endpoint>",
       clientID: "<your_client_id>",
       sessionType: "refresh_token",
     });
