@@ -6,7 +6,15 @@ You can follow the tutorial to learn how to integrate Authgear with your Vue sin
 
 ## Environment setup
 
-Setup the `endpoint` and `clientID` variables in `src/main.ts`.
+Setup the `endpoint` and `clientID` variables in a `.env` file on the root directory of your project using the following fields:
+
+````
+VITE_AUTHGEAR_CLIENT_ID=your Authgear app client id
+VITE_AUTHGEAR_ENDPOINT=your Authgear project URL
+VITE_AUTHGEAR_REDIRECT_URL=http://localhost:4000/auth-redirect
+````
+
+Ensure to add http://localhost:4000/auth-redirect as a redirect URI for your application in Authgear Portal.
 
 ## Available Scripts
 
