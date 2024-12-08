@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import authgear, { Page } from "@authgear/web";
+import authgear, { PromptOption, Page } from "@authgear/web";
 import { inject, onMounted, ref } from "vue";
 import { UserStateSymbol } from "../contexts/UserProvider.vue";
 
@@ -28,8 +28,8 @@ onMounted(() => {
 const startLogin = () => {
   authgear
     .startAuthentication({
-      redirectURI: "http://localhost:4000/auth-redirect",
-      prompt: "login",
+      redirectURI: import.meta.env.VITE_AUTHGEAR_REDIRECT_URL,
+      prompt: PromptOption.Login,
     })
     .then(
       () => {
