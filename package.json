@@ -9,14 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@authgear/web": "2.11.0",
-    "vue": "^3.5.13",
-    "vue-router": "4.5.0"
+    "@authgear/web": "5.1.0",
+    "vue": "^3.5.40",
+    "vue-router": "5.2.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.2.1",
-    "typescript": "~5.6.2",
-    "vite": "^6.0.1",
-    "vue-tsc": "^2.1.10"
+    "@vitejs/plugin-vue": "^6.0.8",
+    "typescript": "~6.0.3",
+    "vite": "^8.1.5",
+    "vue-tsc": "^3.3.7"
   }
 }
